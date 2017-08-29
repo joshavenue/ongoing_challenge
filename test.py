@@ -37,22 +37,30 @@ def show_list():
     for names in name and ages in age :
         print(names, ' - ',ages)
 
+def warning():
+    if name[len(name)] in num_data:
+        print('Number is not allow in naming')
+    else:
+        pass
+
 while True:
     print('You have {} new recruits.'.format(len(name)))
     new_name = input('NAME : ')
     new_age = input('AGE :')
-
+    
+    
     if new_name.lower() == 'DONE'.lower() or new_age.lower() == 'DONE'.lower():
         break
     elif new_name.lower() == 'CLEAN'.lower() or new_age.lower == 'CLEAN':
         erase_All()
-        break
+        continue
+
     elif new_name.lower() == "HELP".lower() or new_age.lower() == 'HELP'.lower():
         get_help()
         continue
     elif new_name.lower() == 'EXIT'.lower():
         raise SystemExit
-        
+
     elif new_name.lower() == 'SHOW'.lower() or new_age.lower() == 'SHOW'.lower():
         show_list()
         continue
