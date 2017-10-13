@@ -1,10 +1,7 @@
 import math
 import random
-import nltk
 import os
-from nltk.book import *
-
-selection = [1,2,3,4,5,6,7,8,9]
+from nltk.tokenize import word_tokenize
 
 def system_clean():
 
@@ -17,43 +14,77 @@ def display_text():
 
 	print(texts())
 
-def check_text(x1,x2,x3):
+def tokenizer():
 
-	if x1.lower() == x1.isalpha():
-		pass
-	elif x2.lower() == x2.isalpha():
-		pass
-	elif x3.lower() == x3.isalpha():
-		pass
-	else
-		raise TypeError and SystemExit
+	time = 0
+	global empty
+	empty = []
+
+	while time < 3:
+
+		ask_word = str(input('Enter a word : '))
+
+		empty.append(ask_word)
+
+		check_word = [word_tokenize(word) for word in empty]
+
+		time += 1
+
+
+def find_lexical_diff():
+
+	global time
+	time = 2
+	global lex
+	lex = []
+	limit = 0
+	pick_rule = ['text1','text2',
+				'text3','text4',
+				'text5','text6',
+				'text7','text8',
+				'text9']
+
+	while limit < time:
+
+		try:
+			pick_text = str(input('Pick a text : '))
+
+			if pick_text in pick_rule:
+				lex.append(pick_text)
+				limit += 1
+			else:
+				system_clean()
+				pass
+		except NameError:
+			break
+
+	print(lex)
+
+find_lexical_diff()
+def print_texts():
+	print(texts())
+
+def print_sents():
+	print(sents())
 
 def ask_text_sent():
 
 	ask_1 = str(input('Do you want to display Text? : '))
 	ask_2 = str(input('Do you want to display Sent? : '))
 
-	return ask_1, ask_2
-
-def find_lexical_diff():
-
-	ask_three = []
-	ask_3 = str(input('Which text do you wish to compare?'))
-
-	while len(ask_3) < 3:
-
-		yield ask_3
-
-		if ask_3.lower() not in selection:
-			raise LookupError and TypeError
-		elif ask_3.lower() in selection:
-			ask_three.append(ask_3)
-			ask_3 -= 1
-			continue
-		else:
-			break
-
-	return ask_three
+	if ask_1 == 'y'.lower() and ask_2 == 'y'.lower():
+		system_clean()
+		print_texts()
+		print_sents()
+	elif ask_1 == 'y'.lower() and ask_2 == 'n'.lower() :
+		system_clean()
+		print_texts()
+	elif ask_2 == 'y'.lower() and ask_1 == 'n'.lower():
+		system_clean()
+		print_sents()
+	else:
+		system_clean()
+		raise SystemExit
 
 def random_text():
 
@@ -70,5 +101,7 @@ def plot_lexical_comparison():
 
 	ask_three.dispersion_plot([])
 
+tokenizer()
+print(empty)
 
 
